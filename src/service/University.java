@@ -1,5 +1,9 @@
 package service;
 
+import model.Professor;
+import model.Student;
+import model.UniClass;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -33,15 +37,15 @@ public class University {
         return classes;
     }
 
-
-    //Professors
+    // === Professors ===
     public void addProfessor(Professor professor) {
         if (professor != null) {
             professors.add(professor);
         }
     }
 
-    public void listProfessors() {
+    // llamado en Main como university.printTeachers()
+    public void printTeachers() {
         if (professors.isEmpty()) {
             System.out.println("No professors registered :( ");
         } else {
@@ -51,6 +55,7 @@ public class University {
         }
     }
 
+    // === Students ===
     public void addStudent(Student student) {
         if (student != null) {
             students.add(student);
@@ -67,13 +72,15 @@ public class University {
         }
     }
 
-   public void addClass(UniClass uniClass) {
+    // === Classes ===
+    public void addClass(UniClass uniClass) {
         if (uniClass != null) {
             classes.add(uniClass);
         }
     }
 
-    public void listClasses() {
+    // llamado en Main como university.printClasses()
+    public void printClasses() {
         if (classes.isEmpty()) {
             System.out.println("No classes registered :( ");
         } else {
@@ -83,15 +90,8 @@ public class University {
         }
     }
 
-    public Student findStudentById(String id) {
-        for (Student s : students) {
-            if (s.getId().equalsIgnoreCase(id)) {
-                return s;
-            }
-        }
-        return null;
-    }
-    public void printClasses(Scanner scanner) {
+    // Mostrar detalle de clases y alumnos (usando scanner)
+    public void showClassDetails(Scanner scanner) {
         if (classes.isEmpty()) {
             System.out.println("No classes registered.");
             return;
@@ -111,21 +111,22 @@ public class University {
             System.out.println("\nClass: " + selected.getName());
             System.out.println("Teacher: " + selected.getProfessor().getName());
             System.out.println("Students:");
-            for (Student s : selected.getStudents()) {
-                System.out.println("- " + s.getName() + " (ID: " + s.getId() + ")");
-            }
+            selected.printStudents();
         } else if (choice != 0) {
             System.out.println("Invalid option.");
         }
     }
 
+    // === Create Student ===
     public void createStudent(Scanner scanner) {
-        System.out.print("Enter student name: ");
-        String name = scanner.nextLine();
         System.out.print("Enter student ID: ");
         String id = scanner.nextLine();
+        System.out.print("Enter student name: ");
+        String name = scanner.nextLine();
+        System.out.print("Enter student age: ");
+        int age = Integer.parseInt(scanner.nextLine());
 
-        Student newStudent = new Student(name, id);
+        Student newStudent = new Student(id, name, age);
         students.add(newStudent);
 
         // Ask where to add this student
@@ -148,15 +149,19 @@ public class University {
         }
     }
 
+    // === Create Class ===
     public void createClass(Scanner scanner) {
         System.out.print("Enter class name: ");
         String className = scanner.nextLine();
 
-        // Select a teacher
+        System.out.print("Enter classroom (e.g., A101): ");
+        String classRoom = scanner.nextLine();
+
         if (professors.isEmpty()) {
             System.out.println("No professors available. Please create professors first.");
             return;
         }
+
         System.out.println("\nSelect a professor for this class:");
         for (int i = 0; i < professors.size(); i++) {
             System.out.println((i + 1) + ") " + professors.get(i).getName());
@@ -165,7 +170,6 @@ public class University {
         scanner.nextLine();
         Professor chosenProf = professors.get(profChoice - 1);
 
-        // Select students
         List<Student> chosenStudents = new ArrayList<>();
         if (!students.isEmpty()) {
             System.out.println("\nSelect students for this class (enter numbers separated by commas):");
@@ -186,16 +190,37 @@ public class University {
             }
         }
 
-        UniClass newClass = new UniClass(className, chosenProf, chosenStudents);
+        UniClass newClass = new UniClass(className, classRoom, chosenProf, chosenStudents);
         classes.add(newClass);
 
         System.out.println("Class " + className + " created successfully!");
     }
 
+    // === Search ===
+    public void findClassesByStudent(Scanner scanner) {
+        System.out.print("Enter student ID to search: ");
+        String id = scanner.nextLine();
+        Student student = findStudentById(id);
 
+        if (student == null) {
+            System.out.println("No student found with ID: " + id);
+            return;
+        }
 
+        System.out.println("Classes for student " + student.getName() + ":");
+        for (UniClass c : classes) {
+            if (c.getStudents().contains(student)) {
+                System.out.println("- " + c.getName() + " (Teacher: " + c.getProfessor().getName() + ")");
+            }
+        }
+    }
 
-
-
-
+    private Student findStudentById(String id) {
+        for (Student s : students) {
+            if (s.getId().equalsIgnoreCase(id)) {
+                return s;
+            }
+        }
+        return null;
+    }
 }

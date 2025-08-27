@@ -1,17 +1,20 @@
 package util;
 
+import model.*;
+import service.University;
+
 import java.util.Arrays;
 
 public class DataInitializer {
 
-    public static model.University initializeUniversity() {
-        model.University university = new University("Universidad Nacional de Colombia");
+    public static service.University initializeUniversity() {
+        service.University university = new University("Universidad Nacional de Colombia");
 
 
-        Professor full1 = new FullTimeProfessor("Shakira", 3000, 8); // fulltime
+        Professor full1 = new FullTimeProfessor("Shakira", 3000, 32); // fulltime
         Professor full2 = new FullTimeProfessor("Carlos Vives", 2800, 12); // fulltime
-        Professor part1 = new PartTimeProfessor("Maluma", 120, 15); // parttime
-        Professor part2 = new PartTimeProfessor("J Balvin", 100, 20); // parttime
+        Professor part1 = new PartTimeProfessor("Maluma", 120, 34, 23); // parttime
+        Professor part2 = new PartTimeProfessor("J Balvin", 100, 21, 45); // parttime
 
         university.addProfessor(full1);
         university.addProfessor(full2);
