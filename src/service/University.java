@@ -44,7 +44,7 @@ public class University {
         }
     }
 
-    // llamado en Main como university.printTeachers()
+
     public void printTeachers() {
         if (professors.isEmpty()) {
             System.out.println("No professors registered :( ");
@@ -55,7 +55,6 @@ public class University {
         }
     }
 
-    // === Students ===
     public void addStudent(Student student) {
         if (student != null) {
             students.add(student);
@@ -72,14 +71,14 @@ public class University {
         }
     }
 
-    // === Classes ===
+
     public void addClass(UniClass uniClass) {
         if (uniClass != null) {
             classes.add(uniClass);
         }
     }
 
-    // llamado en Main como university.printClasses()
+
     public void printClasses() {
         if (classes.isEmpty()) {
             System.out.println("No classes registered :( ");
@@ -90,7 +89,7 @@ public class University {
         }
     }
 
-    // Mostrar detalle de clases y alumnos (usando scanner)
+
     public void showClassDetails(Scanner scanner) {
         if (classes.isEmpty()) {
             System.out.println("No classes registered.");
@@ -117,7 +116,7 @@ public class University {
         }
     }
 
-    // === Create Student ===
+
     public void createStudent(Scanner scanner) {
         System.out.print("Enter student ID: ");
         String id = scanner.nextLine();
@@ -149,7 +148,7 @@ public class University {
         }
     }
 
-    // === Create Class ===
+
     public void createClass(Scanner scanner) {
         System.out.print("Enter class name: ");
         String className = scanner.nextLine();
@@ -196,7 +195,7 @@ public class University {
         System.out.println("Class " + className + " created successfully!");
     }
 
-    // === Search ===
+
     public void findClassesByStudent(Scanner scanner) {
         System.out.print("Enter student ID to search: ");
         String id = scanner.nextLine();
