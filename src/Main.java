@@ -1,15 +1,50 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+
+import model.University;
+import util.DataInitializer;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        University university = DataInitializer.initUniversity();
+        Scanner scanner = new Scanner(System.in);
+        int option;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        do {
+            System.out.println("\n(っ◔◡◔)っ Welcome to the University System");
+            System.out.println("1) (•◡•)/ Show all professors");
+            System.out.println("2) (¬‿¬) Show all classes");
+            System.out.println("3) (ᵔᴥᵔ) Create a new student");
+            System.out.println("4) (ง'̀-'́)ง Create a new class");
+            System.out.println("5) (◕‿◕✿) Find classes by student ID");
+            System.out.println("6) (⌐■_■) Exit");
+            System.out.print("Choose an option: ");
+            option = scanner.nextInt();
+            scanner.nextLine(); // consume newline
+
+            switch (option) {
+                case 1:
+                    university.printTeachers();
+                    break;
+                case 2:
+                    university.printClasses();
+                    break;
+                case 3:
+                    university.createStudent(scanner);
+                    break;
+                case 4:
+                    university.createClass(scanner);
+                    break;
+                case 5:
+                    university.findClassesByStudent(scanner);
+                    break;
+                case 6:
+                    System.out.println("Goodbye ヽ(ˇヘˇ)ノ");
+                    break;
+                default:
+                    System.out.println("Invalid option (╯°□°）╯︵ ┻━┻");
+            }
+        } while (option != 6);
+
+        scanner.close();
     }
 }
