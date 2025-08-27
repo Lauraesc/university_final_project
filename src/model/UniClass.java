@@ -16,6 +16,16 @@ public class UniClass {
         this.students = new ArrayList<>();
     }
 
+
+
+    public UniClass(String name, String classroom, Professor professor, List<Student> students) {
+        this.name = name;
+        this.classroom = classroom;
+        this.professor = professor;
+        this.students = new ArrayList<>(students);
+    }
+
+
     public void addStudent(Student student) {
         try {
             if (student != null) {
