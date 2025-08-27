@@ -5,7 +5,14 @@ public class Student {
     private String name;
     private int age;
 
-    public Student(String name, String id, int age) {
+    public Student(String id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+
+    public Student(String id, String name, int age) {
         try {
             if (name == null || name.isEmpty()) {
                 throw new IllegalArgumentException("Name cannot be null or empty :(");
@@ -17,9 +24,10 @@ public class Student {
                 throw new IllegalArgumentException("Age cannot be negative :(");
             }
 
-            this.name = name;
             this.id = id;
+            this.name = name;
             this.age = age;
+
         } catch (IllegalArgumentException e) {
             System.out.println("Error creating Student: " + e.getMessage());
             this.name = "Unknown";
