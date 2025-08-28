@@ -28,6 +28,7 @@ public class Main {
                     break;
                 case 2:
                     university.printClasses();
+                    university.showClassDetails(scanner);
                     break;
                 case 3:
                     university.createStudent(scanner);

@@ -8,17 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+
+
 public class University {
     private String name;
     private List<Professor> professors;
     private List<Student> students;
     private List<UniClass> classes;
 
+
+    private static int universityCount = 0;
+
     public University(String name) {
         this.name = name;
         this.professors = new ArrayList<>();
         this.students = new ArrayList<>();
         this.classes = new ArrayList<>();
+        universityCount++;
+    }
+
+    public static int getUniversityCount() {
+        return universityCount;
     }
 
     public String getName() {
@@ -37,7 +47,7 @@ public class University {
         return classes;
     }
 
-    // === Professors ===
+
     public void addProfessor(Professor professor) {
         if (professor != null) {
             professors.add(professor);
@@ -184,7 +194,7 @@ public class University {
                         chosenStudents.add(students.get(studentIdx - 1));
                     }
                 } catch (NumberFormatException e) {
-                    // ignore invalid numbers
+
                 }
             }
         }

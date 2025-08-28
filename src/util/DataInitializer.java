@@ -11,10 +11,10 @@ public class DataInitializer {
         service.University university = new University("Universidad Nacional de Colombia");
 
 
-        Professor full1 = new FullTimeProfessor("Shakira", 3000, 32); // fulltime
-        Professor full2 = new FullTimeProfessor("Carlos Vives", 2800, 12); // fulltime
-        Professor part1 = new PartTimeProfessor("Maluma", 120, 34, 23); // parttime
-        Professor part2 = new PartTimeProfessor("J Balvin", 100, 21, 45); // parttime
+        Professor full1 = new FullTimeProfessor("Shakira", 3000, 32);
+        Professor full2 = new FullTimeProfessor("Carlos Vives", 2800, 12);
+        Professor part1 = new PartTimeProfessor("Maluma", 120, 34, 23);
+        Professor part2 = new PartTimeProfessor("J Balvin", 100, 21, 45);
 
         university.addProfessor(full1);
         university.addProfessor(full2);
