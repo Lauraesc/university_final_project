@@ -1,4 +1,4 @@
-import service.University;
+
 import util.DataInitializer;
 import java.util.Scanner;
 

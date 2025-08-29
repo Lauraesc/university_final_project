@@ -138,7 +138,7 @@ public class University {
         Student newStudent = new Student(id, name, age);
         students.add(newStudent);
 
-        // Ask where to add this student
+
         if (!classes.isEmpty()) {
             System.out.println("\nSelect a class to add the student:");
             for (int i = 0; i < classes.size(); i++) {
