@@ -13,6 +13,7 @@ The code is version-controlled with Git, using multiple branches and commits to 
 In short, this project is a functional system for managing a small university, putting Java basics and object-oriented programming best practices into practice.
 
 
-![university](https://github.com/user-attachments/assets/76116012-48f5-42d1-924a-265dfb6546b5)
+![universityd](https://github.com/user-attachments/assets/f99aa3e9-78f5-4f52-8bfa-07e2b99e88a9)
 
-Thanks for watching :)
+
+Thanks for checking out the project! :)
